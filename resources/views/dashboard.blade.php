@@ -56,9 +56,7 @@
                
             </div>
             
-            @include('frontrend.dashboard.dashboard_sidebar')
-
-            
+            @include('frontend.dashboard.dashboard_sidebar')
 
 
             </div>   
