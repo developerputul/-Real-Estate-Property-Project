@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PropertyType;
+use App\Models\Amenities;
+
 
 class PropertyTypeController extends Controller
 {
@@ -70,6 +72,69 @@ class PropertyTypeController extends Controller
     PropertyType::findOrFail($id)->delete();
   $notification = array(
            'message' => 'Property Type Deleted Successfully',
+           'alert-type' => 'success'
+       );
+
+       return redirect()->back()->with($notification);
+
+   } // End Method
+
+   //Amenities All Method
+   
+   public function AllAmenitie(){
+    $amenities = Amenities::latest()->get();
+    return view('backend.amenities.all_amenitie', compact('amenities'));
+
+   } // End Method
+
+   public function AddAmenitie(){
+
+    return view('backend.amenities.add_aminitie');
+
+   } // End Method
+
+   public function StoreAmenitie(Request $request){
+
+   Amenities::insert([
+       'amenitis_name' => $request->amenitis_name,
+   ]);
+   $notification = array(
+       'message' => 'Amenities Create Successfully',
+       'alert-type' => 'success'
+   );
+
+   return redirect()->route('all.amenitie')->with($notification);
+
+} // End Method
+public function EditAmenitie($id){
+
+    $amenities = Amenities::findOrFail($id);
+    return view('backend.amenities.edit_amenities', compact('amenities'));
+
+} // End Method
+
+
+public function UpdateAmenitie(Request $request){
+
+    $ame_id = $request->id;
+    Amenities::findOrFail($ame_id)->update([
+        'amenitis_name' => $request->amenitis_name,
+    ]);
+    $notification = array(
+        'message' => 'Amenities Update Successfully',
+        'alert-type' => 'success'
+    );
+ 
+    return redirect()->route('all.amenitie')->with($notification);
+ 
+ } // End Method
+
+ public function DeleteAmenitie($id){
+
+    Amenities::findOrFail($id)->delete();
+
+    $notification = array(
+           'message' => 'Amenities Deleted Successfully',
            'alert-type' => 'success'
        );
 
