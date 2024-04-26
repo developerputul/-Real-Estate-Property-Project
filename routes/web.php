@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\PropertyTypeController;
+use App\Http\Controllers\Backend\PropertyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,7 +57,6 @@ require __DIR__.'/auth.php';
 
 
 
-
 //Admin Group Middleware
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
@@ -95,10 +95,8 @@ Route::controller(PropertyTypeController::class)->group(function(){
 
     Route::post('/update/type', 'UpdateType')->name('update.type');
     Route::get('/delete/type{id}', 'DeleteType')->name('delete.type');
-
-
-
 });
+
 //Amenities All Route
 Route::controller(PropertyTypeController::class)->group(function(){
 
@@ -111,7 +109,13 @@ Route::controller(PropertyTypeController::class)->group(function(){
     Route::post('/update/amenitie', 'UpdateAmenitie')->name('update.amenitie');
     Route::get('/delete/amenitie{id}', 'DeleteAmenitie')->name('delete.amenitie');
 
+});
 
+//Property All Route
+Route::controller(PropertyController::class)->group(function(){
+
+    Route::get('/all/property', 'AllProperty')->name('all.property');
+   
 
 });
 
