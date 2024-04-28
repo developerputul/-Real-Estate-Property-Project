@@ -25,6 +25,7 @@
                                     <th>Property Type</th>
                                     <th>Status Type</th>
                                     <th>City</th>
+                                    <th>Code</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -37,9 +38,10 @@
                                         <td><img src="{{ asset($item->property_thambnail) }}"
                                              style="width: 70px; height:40px;"></td> 
                                         <td>{{ $item->property_name }}</td> 
-                                        <td>{{ $item->ptype_id }}</td> 
+                                        <td>{{ $item['type']['type_name'] }}</td> 
                                         <td>{{ $item->property_status }}</td> 
                                         <td>{{ $item->city }}</td> 
+                                        <td>{{ $item->property_code }}</td> 
                                         <td>
                                             
                                             @if ($item->status == 1)
@@ -52,7 +54,7 @@
                             
                                         <!-- Change here -->
                                         <td>
-                                            <a href="{{ route('edit.amenitie', $item->id) }}" class="btn btn-inverse-warning">Edit</a>
+                                            <a href="{{ route('edit.property', $item->id) }}" class="btn btn-inverse-warning">Edit</a>
                                             <a href="{{ route('delete.amenitie', $item->id) }}" class="btn btn-inverse-danger" id="delete">Delete</a>
                                         </td>
                                     </tr>
