@@ -122,6 +122,11 @@ Route::controller(PropertyController::class)->group(function(){
     Route::post('/update/property', 'UpdateProperty')->name('update.property');
 
     Route::post('/update/property/thambnail', 'UpdatePropertyThambnail')->name('update.property.thambnail');
+    Route::post('/update/property/multiimage', 'UpdatePropertyMultiimage')->name('update.property.multiimage');
+
+    Route::get('/property/multiimage/delete/{id}', 'PropertyMultiImageDelete')->name('property.multiimage.delete');
+    Route::post('/store/new/multiimage', 'StoreNewMultiimage')->name('store.new.multiimage');
+
    
 
 });

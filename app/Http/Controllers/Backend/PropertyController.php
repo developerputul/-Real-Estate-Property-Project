@@ -93,7 +93,9 @@ class PropertyController extends Controller
         //Multiple Image  upload here
         $images = $request->file('multi_img');
         if ($images) {
+
             foreach ($images as $img) {
+
                 $make_name = uniqid() . '.' . $img->getClientOriginalExtension();
                 $img->move(public_path('upload/multi_img'), $make_name);
                 $save_url = 'upload/multi_img/' . $make_name;
@@ -132,6 +134,8 @@ class PropertyController extends Controller
     } // End Method
 
     public function EditProperty($id){
+
+        $facilities = Facility::where('property_id', $id)->get();
         $property = Property::findOrFail($id);
         $type = $property->amemities_id;
         $property_ami = explode(',', $type);
@@ -143,7 +147,7 @@ class PropertyController extends Controller
         $activeAgent = User::where('status', 'active')->where('role', 'agent')->latest()->get();
 
         return view('backend.property.edit_property',compact('property', 
-        'propertytype','amenities','activeAgent', 'property_ami', 'multiImage'));
+        'propertytype','amenities','activeAgent', 'property_ami', 'multiImage', 'facilities'));
     } // End Method
 
 
@@ -191,10 +195,10 @@ class PropertyController extends Controller
             'updated_at' => Carbon::now(),
         ]);
 
-        $notification = [
+        $notification = array(
             'message' => 'Property Updated Successfully',
             'alert-type' => 'success'
-        ];
+        );
 
         return redirect()->route('all.property')->with($notification);
 
@@ -223,6 +227,78 @@ class PropertyController extends Controller
             'message' => 'Property Image Thambnail Updated Successfully',
             'alert-type' => 'success'
         ];
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    public function UpdatePropertyMultiimage(Request $request){
+
+        $imgs = $request->multi_img;
+
+        foreach($imgs as $id => $img){
+           $imgDel = MultiImage::findOrFail($id);
+           unlink($imgDel->photo_name);
+
+
+           $make_name = uniqid() . '.' . $img->getClientOriginalExtension();
+           $img->move(public_path('upload/multi_img'), $make_name);
+           $save_url = 'upload/multi_img/' . $make_name;
+
+           MultiImage::where('id', $id)->update([
+
+            'photo_name' => $save_url,
+            'updated_at' => Carbon::now(),
+
+           ]);
+        } // End Foreach 
+
+        $notification = array(
+            'message' => 'Property Multi Image  Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+
+    } // End Method
+
+    public function PropertyMultiImageDelete($id){
+
+        $oldImg = MultiImage::findOrFail($id);
+        unlink($oldImg->photo_name);
+
+        MultiImage::findOrFail($id)->delete();
+        
+        $notification = array(
+            'message' => 'Property Multi Image  Delete Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    public function StoreNewMultiimage(Request $request){
+        $new_multi = $request->imageid;
+
+        $image = $request->file('multi_img');
+
+        $make_name = uniqid() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('upload/multi_img'), $make_name);
+        $save_url = 'upload/multi_img/' . $make_name;
+
+        MultiImage::insert([
+
+         'property_id' => $new_multi,
+         'photo_name' => $save_url,
+         'updated_at' => Carbon::now(),
+
+        ]);
+        $notification = array(
+            'message' => 'Property Multi Image  Added Successfully',
+            'alert-type' => 'success'
+        );
 
         return redirect()->back()->with($notification);
 

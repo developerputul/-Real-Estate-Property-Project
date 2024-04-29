@@ -250,7 +250,7 @@
                         </div>
                          
                     </div>
-<!------------Facility Option------------->
+{{-- //Facility Option// --}}
 
             <div class="row add_item">
                 <div class="col-md-4">
@@ -282,7 +282,8 @@
                     <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> Add More..</a>
                 </div>
             </div> 
-<!---end row-->
+{{-- //End Facility Option// --}}
+
          <button type="Submit" class="btn btn-primary">Save Changes</button>
      </form>
               
