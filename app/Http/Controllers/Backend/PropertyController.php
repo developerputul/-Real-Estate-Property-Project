@@ -43,10 +43,10 @@ class PropertyController extends Controller
         $image = $request->file('property_thambnail');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('upload/property_thambnail'), $name_gen);
-
         $save_url = 'upload/property_thambnail/' . $name_gen;
 
         $property_id = Property::insertGetId([
+
             'ptype_id' => $request->ptype_id,
             'amemities_id' => $amenities,
 
@@ -133,16 +133,99 @@ class PropertyController extends Controller
 
     public function EditProperty($id){
         $property = Property::findOrFail($id);
-
         $type = $property->amemities_id;
         $property_ami = explode(',', $type);
+
+        $multiImage = MultiImage::where('property_id', $id)->get();
 
         $propertytype = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
         $activeAgent = User::where('status', 'active')->where('role', 'agent')->latest()->get();
 
         return view('backend.property.edit_property',compact('property', 
-        'propertytype','amenities','activeAgent', 'property_ami'));
+        'propertytype','amenities','activeAgent', 'property_ami', 'multiImage'));
+    } // End Method
+
+
+    public function UpdateProperty(Request $request){
+        $amen = $request->amemities_id;
+        $amenities = implode(",", $amen);
+
+        $property_id = $request->id;
+        Property::findOrFail( $property_id )->update([
+
+            'ptype_id' => $request->ptype_id,
+            'amemities_id' => $amenities,
+
+            'property_name' => $request->property_name,
+            'property_slug' => strtolower(str_replace('', '-', $request->property_name)),
+
+            'property_status' => $request->property_status,
+            'lowest_price' => $request->lowest_price,
+            'max_price' => $request->max_price,
+
+            'short_desc' => $request->short_desc,
+            'long_desc' => $request->long_desc,
+
+            'bedrooms' => $request->bedrooms,
+            'bathrooms' => $request->bathrooms,
+
+            'garage' => $request->garage,
+            'garage_size' => $request->garage_size,
+
+            'property_size' => $request->property_size,
+            'property_video' => $request->property_video,
+            'address' => $request->address,
+
+            'city' => $request->city,
+            'state' => $request->state,
+            'postal_code' => $request->postal_code,
+            'neighborhood' => $request->neighborhood,
+
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+
+            'featured' => $request->featured,
+            'hot' => $request->hot,
+            'agent_id' => $request->agent_id,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = [
+            'message' => 'Property Updated Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('all.property')->with($notification);
+
+    }// End Method
+
+    public function UpdatePropertyThambnail(Request $request){
+
+        $pro_id = $request->id;
+        $oldImage = $request->old_img;
+
+        $image = $request->file('property_thambnail');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('upload/property_thambnail'), $name_gen);
+        $save_url = 'upload/property_thambnail/' . $name_gen;
+
+        if(file_exists($oldImage)){
+            unlink($oldImage);
+        }
+
+        Property::findOrFail($pro_id)->update([
+            'property_thambnail' => $save_url,
+            'updated_at'    => Carbon::now(),
+        ]);
+
+        $notification = [
+            'message' => 'Property Image Thambnail Updated Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+
     } // End Method
 
 

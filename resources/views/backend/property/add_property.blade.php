@@ -62,7 +62,8 @@
                                 <img src="" id="mainThmb">
 
                             </div>
-                        </div><!--col-->
+                        </div>
+                        <!--col-->
 
                         <div class="col-sm-6">
                             <div class="form-group mb-3">
