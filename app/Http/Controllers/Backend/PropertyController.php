@@ -119,7 +119,7 @@ class PropertyController extends Controller
                 $facility->distance = $request->distance[$i]; // Corrected from property_id to distance
                 $facility->save();
             }
-        }
+        } // End Facility//
 
         $notification = [
             'message' => 'Property Inserted Successfully',
@@ -148,6 +148,7 @@ class PropertyController extends Controller
 
         return view('backend.property.edit_property',compact('property', 
         'propertytype','amenities','activeAgent', 'property_ami', 'multiImage', 'facilities'));
+
     } // End Method
 
 
@@ -301,6 +302,110 @@ class PropertyController extends Controller
         );
 
         return redirect()->back()->with($notification);
+
+    } // End Method
+
+    public function UpdatePropertyFacilities(Request $request){
+
+        $pid = $request->id;
+        
+        if($request->facility_name == NULL){
+            return redirect()->back();
+        }else{
+            Facility::where('property_id',$pid)->delete();
+
+            $facilitiesCount = count($request->facility_name);
+        
+                for ($i = 0; $i < $facilitiesCount; $i++) {
+                    $facility = new Facility();
+                    $facility->property_id = $pid;
+                    $facility->facility_name = $request->facility_name[$i];
+                    $facility->distance = $request->distance[$i]; // Corrected from property_id to distance
+                    $facility->save();
+                } //end for
+        }
+
+        $notification = array(
+            'message' => 'Property Facility Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    public function DeleteProperty($id){
+        $property = Property::findOrFail($id);
+        unlink($property->property_thambnail);
+
+        Property::findOrFail($id)->delete();
+
+        $image = MultiImage::where('property_id',$id)->get();
+        foreach($image as $img){
+            unlink($img->photo_name);
+            MultiImage::where('property_id',$id)->delete();
+        }
+
+        $facilitiesData = Facility::where('property_id',$id)->get();
+        foreach($facilitiesData as $item){
+            $item->facility_name;
+            Facility::where('property_id',$id)->delete();
+        }
+        
+        $notification = array(
+            'message' => 'Property Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    public function DetailsProperty($id){
+
+        $facilities = Facility::where('property_id', $id)->get();
+        $property = Property::findOrFail($id);
+        $type = $property->amemities_id;
+        $property_ami = explode(',', $type);
+
+        $multiImage = MultiImage::where('property_id', $id)->get();
+
+        $propertytype = PropertyType::latest()->get();
+        $amenities = Amenities::latest()->get();
+        $activeAgent = User::where('status', 'active')->where('role', 'agent')->latest()->get();
+
+        return view('backend.property.details_property',compact('property', 
+        'propertytype','amenities','activeAgent', 'property_ami', 'multiImage', 'facilities'));
+
+    } // End Method
+
+    public function InactiveProperty(Request $request){
+        $pid = $request->id;
+        Property::findOrFail($pid)->update([
+            'status' => 0,
+        ]);
+
+        $notification = array(
+            'message' => 'Property InActive Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.property')->with($notification);
+
+    } // End Method
+
+    public function ActiveProperty(Request $request){
+        $pid = $request->id;
+        Property::findOrFail($pid)->update([
+            'status' => 1,
+        ]);
+
+        $notification = array(
+            'message' => 'Property Active Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.property')->with($notification);
 
     } // End Method
 
