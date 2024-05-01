@@ -131,7 +131,7 @@ Route::controller(PropertyTypeController::class)->group(function(){
     Route::get('/delete/type{id}', 'DeleteType')->name('delete.type');
 });
 
-//Amenities All Route
+//Amenities All Type Route
 Route::controller(PropertyTypeController::class)->group(function(){
 
     Route::get('/all/amenitie', 'AllAmenitie')->name('all.amenitie');
@@ -168,8 +168,27 @@ Route::controller(PropertyController::class)->group(function(){
     Route::post('/inactive/property', 'InactiveProperty')->name('inactive.property');
     Route::post('/active/property', 'ActiveProperty')->name('active.property');
 
+});
+
+
+//Agent All Route form Admin
+Route::controller(AdminController::class)->group(function(){
+
+    Route::get('/all/agent', 'AllAgent')->name('all.agent');
+    Route::get('/add/agent', 'AddAgent')->name('add.agent');
+
+    Route::post('/store/agent', 'StoreAgent')->name('store.agent');
+    Route::get('/edit/agent/{id}', 'EditAgent')->name('edit.agent');
+
+    Route::post('/update/agent', 'UpdateAgent')->name('update.agent');
+    Route::get('/delete/agent/{id}', 'DeleteAgent')->name('delete.agent');
+
+    Route::get('/changeStatus', 'changeStatus');
+
+
    
 
 });
+
 
 }); //End Group Admin Middleware
