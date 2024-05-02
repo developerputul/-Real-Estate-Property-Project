@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use App\Models\Amenities;
 use Illuminate\Support\Facades\Auth; 
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use DB;
 
 
 
@@ -34,6 +35,10 @@ class AgentPropertyController extends Controller
     } // End Method
 
     public function AgentStoreProperty(Request $request){
+
+        $id = Auth::user()->id;
+        $uid = User::findOrFail($id);
+        $nid = $uid->credit;
 
         $amen = $request->amemities_id;
         $amenities = implode(",", $amen);
@@ -122,6 +127,10 @@ class AgentPropertyController extends Controller
                 $facility->save();
             }
         } // End Facility//
+
+        User::where('id',$id)->update([
+            'credit' => DB::raw('1 + '.$nid),
+        ]);
 
         $notification = [
             'message' => 'Property Inserted Successfully',
@@ -377,5 +386,10 @@ class AgentPropertyController extends Controller
         return redirect()->back()->with($notification); 
 
     }// End Method  
+
+    public function BuyPackage(){
+
+        return view('agent.package.buy_package');
+    } // End Method
     
 }
