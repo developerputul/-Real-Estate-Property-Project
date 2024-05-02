@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
+
 class PropertyController extends Controller
 {
     public function AllProperty()
@@ -30,6 +31,7 @@ class PropertyController extends Controller
 
         return view('backend.property.add_property', compact('propertytype', 'amenities', 'activeAgent'));
     } //End Method
+
 
     public function StoreProperty(Request $request)
     {
@@ -129,8 +131,6 @@ class PropertyController extends Controller
         return redirect()->route('all.property')->with($notification);
 
         //Facility End form here//
-
-
     } // End Method
 
     public function EditProperty($id){
@@ -230,7 +230,6 @@ class PropertyController extends Controller
         ];
 
         return redirect()->back()->with($notification);
-
     } // End Method
 
     public function UpdatePropertyMultiimage(Request $request){
@@ -258,10 +257,7 @@ class PropertyController extends Controller
             'message' => 'Property Multi Image  Updated Successfully',
             'alert-type' => 'success'
         );
-
         return redirect()->back()->with($notification);
-
-
     } // End Method
 
     public function PropertyMultiImageDelete($id){

@@ -195,7 +195,7 @@
                                 <select name="amemities_id[]" class="js-example-basic-multiple form-select" multiple="multiple"
                                     data-width="100%">
                                     @foreach ($amenities as $ameni)                                    
-                                    <option value="{{ $ameni->id }}" {{ (in_array($ameni->id, $property_ami))
+                                    <option value="{{ $ameni->amenitis_name }}" {{ (in_array($ameni->amenitis_name,$property_ami))
                                         ? 'selected' : '' }}>
                                         {{ $ameni->amenitis_name }}</option>
                                     @endforeach
@@ -362,7 +362,8 @@
 
                 <td>
                 <input type="submit" class="btn btn-primary px-4" value="Update Image">
-                <a href="{{ route('property.multiimage.delete', $img->id) }}" class="btn btn-danger" id="delete">Delete</a>
+                <a href="{{ route('property.multiimage.delete', $img->id) }}" class="btn btn-danger" 
+                    id="delete">Delete</a>
                 </td>
             </tr>
             @endforeach

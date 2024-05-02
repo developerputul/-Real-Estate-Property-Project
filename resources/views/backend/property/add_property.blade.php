@@ -196,7 +196,7 @@
                      data-width="100%">
 
                                 @foreach ($amenities as $ameni)                                    
-                                   <option value="{{ $ameni->id }}">{{ $ameni->amenitis_name }}</option>
+                                   <option value="{{ $ameni->amenitis_name }}">{{ $ameni->amenitis_name }}</option>
                                 @endforeach
                                 </select>
                             </div>
