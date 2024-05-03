@@ -489,8 +489,7 @@ class AgentPropertyController extends Controller
 
     public function AgentPackageInvoice($id){
 
-        $packagehistory = PackagePlan::where('id',$id)->first();
-            
+        $packagehistory = PackagePlan::where('id',$id)->first(); 
         $pdf = Pdf::loadView('agent.package.package_history_invoice', compact('packagehistory'))
         ->setPaper('a4')->setOption([
             'tempDir' => public_path(),

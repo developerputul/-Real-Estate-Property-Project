@@ -116,19 +116,19 @@ Route::middleware(['auth','role:agent'])->group(function(){
 
 
 //Admin Group Middleware
-Route::middleware(['auth','role:admin'])->group(function(){
+ Route::middleware(['auth','role:admin'])->group(function(){
  
 //Property Type All Route
-Route::controller(PropertyTypeController::class)->group(function(){
+ Route::controller(PropertyTypeController::class)->group(function(){
 
-    Route::get('/all/type', 'AllType')->name('all.type');
-    Route::get('/add/type', 'AddType')->name('add.type');
+        Route::get('/all/type', 'AllType')->name('all.type');
+        Route::get('/add/type', 'AddType')->name('add.type');
 
-    Route::post('/store/type', 'StoreType')->name('store.type');
-    Route::get('/edit/type{id}', 'EditType')->name('edit.type');
+        Route::post('/store/type', 'StoreType')->name('store.type');
+        Route::get('/edit/type{id}', 'EditType')->name('edit.type');
 
-    Route::post('/update/type', 'UpdateType')->name('update.type');
-    Route::get('/delete/type{id}', 'DeleteType')->name('delete.type');
+        Route::post('/update/type', 'UpdateType')->name('update.type');
+        Route::get('/delete/type{id}', 'DeleteType')->name('delete.type');
 });
 
 //Amenities All Type Route
@@ -167,6 +167,9 @@ Route::controller(PropertyController::class)->group(function(){
     Route::get('/details/property/{id}', 'DetailsProperty')->name('details.property');
     Route::post('/inactive/property', 'InactiveProperty')->name('inactive.property');
     Route::post('/active/property', 'ActiveProperty')->name('active.property');
+
+    Route::get('/admin/package/history', 'AdminPackageHistory')->name('admin.package.history');
+    Route::get('/package/invoice/{id}', 'PackageInvoice')->name('package.invoice');
 
 });
 
