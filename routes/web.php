@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Agent\AgentPropertyController;
+use App\Http\Controllers\Frontend\IndexController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +39,7 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/user/profile', [UserController::class, 'UserProfile'])
     ->name('user.profile');
 
@@ -250,3 +253,7 @@ Route::controller(AgentPropertyController::class)->group(function(){
    
 
 }); //End Group Agent Middleware //
+
+// Frontend Property Details all Route  //
+
+Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
