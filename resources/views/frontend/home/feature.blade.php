@@ -15,7 +15,6 @@
 
             @foreach ($property as $item)
                 
-           
             <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
                 <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="inner-box">
@@ -27,36 +26,45 @@
                         <div class="lower-content">
                             <div class="author-info clearfix">
                                 <div class="author pull-left">
-
-                                @if ($item->agent_id == NULL)
-
+                                    
+                        @if ($item->agent_id == NULL)
                                 <figure class="author-thumb"><img src="{{ url('upload/banner_img.png')}}" alt="">
-
-                                    <h6>Admin</h6>
+                                     <h6>Admin</h6>
                                 </figure>
-
-                                @else
-
+                        @else
                                 <figure class="author-thumb"><img src="{{ !empty($item->user->photo) ?
                                     url('upload/agent_images/'.$item->user->photo) : url('upload/no_image.jpg')}}" alt="">
                                 </figure>
-                                           <h6>{{ $item->user->name }}</h6>
-                                @endif
-                                       
+                                    <h6>{{ $item->user->name }}</h6>
+                        @endif
+                                  
+                        
                                 </div>
-
                                 <div class="buy-btn pull-right"><a href="property-details.html">For {{ $item->property_status }}</a></div>
                             </div>
-                            <div class="title-text"><h4><a href="{{ url('property/details/'.$item->id.'/'.$item->property_slug) }}">{{ $item->property_name }}</a></h4></div>
+                            <div class="title-text"><h4><a href="{{ url('property/details/'.$item->id.'/'.$item->property_slug) }}">
+                                {{ $item->property_name }}</a></h4></div>
                             <div class="price-box clearfix">
                                 <div class="price-info pull-left">
                                     <h6>Start From</h6>
                                     <h4>${{ $item->lowest_price }}</h4>
                                 </div>
-                                <ul class="other-option pull-right clearfix">
-                                    <li><a href="property-details.html"><i class="icon-12"></i></a></li>
-                                    <li><a href="property-details.html"><i class="icon-13"></i></a></li>
-                                </ul>
+
+                        <ul class="other-option pull-right clearfix">
+                            <li>
+                                <a href="property-details.html">
+                                    <i class="icon-12"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a aria-label="Add To Wishlist" class="action-btn"
+                                 id="{{ $item->id }}" onclick="addToWishlist(this.id)" >
+                                  <i class="icon-13"></i>
+                               </a>
+                            </li>
+                        </ul>
+
                             </div>
                             <p>{{ $item->short_desc }}</p>
                             <ul class="more-details clearfix">

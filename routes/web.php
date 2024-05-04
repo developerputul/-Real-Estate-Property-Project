@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-
 Route::middleware('auth')->group(function () {
 
     Route::get('/user/profile', [UserController::class, 'UserProfile'])
@@ -54,6 +54,17 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])
     ->name('user.password.update');
+
+     
+//User Wishlist Type All Route
+ Route::controller(WishlistController::class)->group(function(){
+
+    Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist');
+    Route::get('/get-wishlist-property', 'GetWishlistProperty');
+
+    Route::get('/wishlist-remove/{id}', 'WishlistRemove');
+    
+});
 
   
 });
@@ -257,3 +268,6 @@ Route::controller(AgentPropertyController::class)->group(function(){
 // Frontend Property Details all Route  //
 
 Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
+
+//Wishlist Add Route
+Route::post('/add-to-wishlist/{property_id}', [WishlistController::class, 'AddToWishList']);

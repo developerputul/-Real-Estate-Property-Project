@@ -10,6 +10,8 @@
 <!-- Fav Icon -->
 <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico')}}" type="image/x-icon">
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
@@ -114,6 +116,162 @@
 	}
 	@endif 
    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+        }
+    })
+     
+        //Add To Wishlist
+        function addToWishlist(property_id){
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "/add-to-wishlist/"+property_id,
+
+                success:function(data){
+                    wishlist();
+
+                     // Start Message 
+            const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  
+                  showConfirmButton: false,
+                  timer: 3000 
+            })
+            if ($.isEmptyObject(data.error)) {
+                    
+                    Toast.fire({
+                    type: 'success',
+                    icon: 'success', 
+                    title: data.success, 
+                    })
+
+            }else{
+               
+           Toast.fire({
+                    type: 'error',
+                    icon: 'error', 
+                    title: data.error, 
+                    })
+                }
+              // End Message  
+
+
+                }
+            })
+        }
+
+    </script>
+<!-- // start load Wishlist Data  -->
+
+<script type="text/javascript">
+    function wishlist(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "/get-wishlist-property/",
+
+            success:function(response){
+                $('#wishQty').text(response.wishQty);
+
+
+                var rows = ""
+                $.each(response.wishlist, function(key,value){
+
+                    rows += `<div class="deals-block-one">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <figure class="image"><img src="/${value.property.property_thambnail}" alt=""></figure>
+                                <div class="batch"><i class="icon-11"></i></div>
+                                <span class="category">Featured</span>
+                                <div class="buy-btn"><a href="#">For ${value.property.property_status}</a></div>
+                            </div>
+                            <div class="lower-content">
+                                <div class="title-text"><h4><a href="">${value.property.property_name}</a></h4></div>
+                                <div class="price-box clearfix">
+                                    <div class="price-info pull-left">
+                                        <h6>Start From</h6>
+                                        <h4>${value.property.lowest_price}</h4>
+                                    </div>
+                                   
+                                </div>
+                               
+                                <ul class="more-details clearfix">
+                                    <li><i class="icon-14"></i>${value.property.bedrooms} Beds</li>
+                                    <li><i class="icon-15"></i>${value.property.bathrooms} Baths</li>
+                                    <li><i class="icon-16"></i>${value.property.property_size} Sq Ft</li>
+                                </ul>
+                                <div class="other-info-box clearfix">
+                                   
+                                    <ul class="other-option pull-right clearfix">
+                                       
+                            <li><a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-trash"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+                    
+                
+                });
+                $('#wishlist').html(rows);
+            }
+        })
+    }
+    wishlist();
+
+    //WishList Remove start
+
+    function wishlistRemove(id){
+
+        $.ajax({
+            type: "GET",
+            dataType: 'Json',
+            url: "/wishlist-remove/"+id,
+
+            success:function(data){
+                wishlist();
+                
+                     // Start Message 
+            const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  
+                  showConfirmButton: false,
+                  timer: 3000 
+            })
+            if ($.isEmptyObject(data.error)) {
+                    
+                    Toast.fire({
+                    type: 'success',
+                    icon: 'success', 
+                    title: data.success, 
+                    })
+
+            }else{
+               
+           Toast.fire({
+                    type: 'error',
+                    icon: 'error', 
+                    title: data.error, 
+                    })
+                }
+              // End Message
+
+            }
+        })
+
+    }
+    //End WishList Remove start
+    
+</script>
+
 
 </body>
 <!-- End of .page_wrapper -->

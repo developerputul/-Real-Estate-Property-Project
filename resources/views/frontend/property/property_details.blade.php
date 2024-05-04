@@ -355,9 +355,7 @@
             <div class="row clearfix">
 
                 @foreach ($relatedproperty as $item)
-                    
-              
-
+                     
                 <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
                     <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
@@ -370,24 +368,19 @@
                                 <div class="author-info clearfix">
                                     <div class="author pull-left">
 
-                                        @if ($item->agent_id == NULL)
 
-                                <figure class="author-thumb"><img src="{{ url('upload/banner_img.png')}}" alt="">
 
-                                   
-                                </figure>
-                                   <h6>Admin</h6>
-                                @else
-
-                                <figure class="author-thumb"><img src="{{ !empty($item->user->photo) ?
+                        @if ($item->agent_id == NULL)
+                            <figure class="author-thumb"><img src="{{ url('upload/banner_img.png')}}" alt=""></figure>
+                                <h6>Admin</h6>
+                        @else
+                            <figure class="author-thumb"><img src="{{ !empty($item->user->photo) ?
                                     url('upload/agent_images/'.$item->user->photo) : url('upload/no_image.jpg')}}" alt="">
-                                </figure>
-                                           <h6>{{ $item->user->name }}</h6>
-                                @endif
-                                       
-
-
-                                       
+                             </figure>
+                                <h6>{{ $item->user->name }}</h6>
+                         @endif
+                                     
+                         
                                     </div>
                                     <div class="buy-btn pull-right"><a href="property-details.html">For {{ $item->property_status }}</a></div>
                                 </div>
