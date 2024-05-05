@@ -154,6 +154,7 @@ Route::middleware(['auth','role:agent'])->group(function(){
 
         Route::post('/update/type', 'UpdateType')->name('update.type');
         Route::get('/delete/type{id}', 'DeleteType')->name('delete.type');
+
 });
 
 //Amenities All Type Route
@@ -195,6 +196,8 @@ Route::controller(PropertyController::class)->group(function(){
 
     Route::get('/admin/package/history', 'AdminPackageHistory')->name('admin.package.history');
     Route::get('/package/invoice/{id}', 'PackageInvoice')->name('package.invoice');
+
+    Route::get('/admin/property/message/', 'AdminPropertyMessage')->name('admin.property.message');
 
 });
 

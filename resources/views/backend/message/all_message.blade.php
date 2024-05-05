@@ -1,6 +1,5 @@
-@extends('agent.agent_dashboard')
-@section('agent')
-
+@extends('admin.admin_dashboard')
+@section('admin')
 
 <div class="page-content">
         
@@ -86,7 +85,7 @@
                   @foreach ($usermsg as $msg)
                       
                   <div class="email-list-item">
-                    <a href="{{ route('agent.message.details', $msg->id) }}" class="email-list-detail">
+                    <a href="" class="email-list-detail">
                       <div class="content">
                         <span class="from">{{ $msg['user']['name'] }}</span>
                         <p class="msg">{{ $msg->msg }}</p>
@@ -110,7 +109,6 @@
     </div>
 
         </div>
-
 
 
 

@@ -15,6 +15,8 @@ use Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Models\PackagePlan;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\PropertyMessage;
+// use Illuminate\Support\Facades\Auth; 
 
 
 class PropertyController extends Controller
@@ -423,6 +425,13 @@ class PropertyController extends Controller
         ]);
         return $pdf->download('invoice.pdf');
 
+    } // End Method
+
+    public function AdminPropertyMessage(){
+
+        $usermsg = PropertyMessage::latest()->get();
+
+        return view('backend.message.all_message', compact('usermsg'));
     } // End Method
 
 
