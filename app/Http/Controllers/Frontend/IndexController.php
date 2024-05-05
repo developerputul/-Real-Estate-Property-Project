@@ -10,11 +10,12 @@ use App\Models\Facility;
 use App\Models\MultiImage;
 use App\Models\PropertyType;
 use App\Models\User;
-use Carbon\Carbon;
-use Image;
+use Illuminate\Support\Facades\Auth;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Models\PackagePlan;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\PropertyMessage;
+use Carbon\Carbon;
 
 class IndexController extends Controller
 {
@@ -37,4 +38,40 @@ class IndexController extends Controller
         'multiImage', 'property_amen', 'facility', 'relatedproperty'));
 
     } // End Method
+
+    public function PropertyMessage(Request $request){
+        $pid = $request->property_id;
+        $aid = $request->agent_id;
+
+        if(Auth::check()){
+
+            PropertyMessage::insert([
+                'user_id' => Auth::user()->id,
+                'agent_id' => $aid,
+                'property_id' => $pid,
+                'msg_name' => $request->msg_name,
+                'msg_email' => $request->msg_email,
+                'msg_phone' => $request->msg_phone,
+                'msg' => $request->msg,
+                'created_at' => Carbon::now(),
+
+            ]);
+            $notification = array(
+                'message' => 'Send Message Successfully',
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->back()->with($notification);
+
+        }else{
+             
+         $notification = array(
+            'message' => 'Plz Login Your Account First',
+            'alert-type' => 'error'
+        );
+
+        return redirect()->back()->with($notification);
+        }
+
+    } //End Method
 }
