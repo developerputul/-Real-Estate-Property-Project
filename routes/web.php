@@ -11,6 +11,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Frontend\CompareController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,16 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/wishlist-remove/{id}', 'WishlistRemove');
     
+});
+     
+//User Compare All Route
+ Route::controller(CompareController::class)->group(function(){
+
+    Route::get('/user/compare', 'UserCompare')->name('user.compare');
+    Route::get('/get-compare-property', 'GetCompareProperty');
+
+    Route::get('/compare-remove/{id}', 'CompareRemove');
+  
 });
 
   
@@ -271,3 +282,5 @@ Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDe
 
 //Wishlist Add Route
 Route::post('/add-to-wishlist/{property_id}', [WishlistController::class, 'AddToWishList']);
+//Compare Add Route
+Route::post('/add-to-compare/{property_id}', [CompareController::class, 'AddToCompare']);

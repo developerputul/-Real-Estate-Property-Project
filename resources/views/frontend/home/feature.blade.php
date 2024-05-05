@@ -50,20 +50,12 @@
                                     <h4>${{ $item->lowest_price }}</h4>
                                 </div>
 
-                        <ul class="other-option pull-right clearfix">
-                            <li>
-                                <a href="property-details.html">
-                                    <i class="icon-12"></i>
-                                </a>
-                            </li>
+    <ul class="other-option pull-right clearfix"><li><a aria-label="Compare"
+            class="action-btn" id="{{ $item->id }}" onclick="addToCompare(this.id)"><i class="icon-12"></i></a></li>
 
-                            <li>
-                                <a aria-label="Add To Wishlist" class="action-btn"
-                                 id="{{ $item->id }}" onclick="addToWishlist(this.id)" >
-                                  <i class="icon-13"></i>
-                               </a>
-                            </li>
-                        </ul>
+        <li><a aria-label="Add To Wishlist" c
+            lass="action-btn" id="{{ $item->id }}" onclick="addToWishlist(this.id)" ><i class="icon-13"></i></a> </li>
+    </ul>
 
                             </div>
                             <p>{{ $item->short_desc }}</p>
