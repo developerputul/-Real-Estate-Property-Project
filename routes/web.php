@@ -254,10 +254,14 @@ Route::controller(PropertyController::class)->group(function(){
        Route::get('/agent/delete/property/{id}', 'AgentDeleteProperty')
        ->name('agent.delete.property');
  
+       Route::get('/agent/property/message/', 'AgentPropertyMessage')->name('agent.property.message');
+
+       Route::get('/agent/message/details/{id}', 'AgentMessageDetails')->name('agent.message.details');
+ 
 });
 
 
-//Agent Buy Package Route 
+//Agent Buy Package Route Form Admin
 Route::controller(AgentPropertyController::class)->group(function(){
 
     Route::get('/buy/package', 'BuyPackage')->name('buy.package');
