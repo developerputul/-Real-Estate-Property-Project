@@ -285,8 +285,7 @@
                         </div>
 
 
-                    <div class="form-inner">
-
+            <div class="form-inner">
                         @auth
 
                 @php
@@ -299,12 +298,12 @@
 
                             <input type="hidden" name="property_id" value="{{ $property->id }}">
 
-                            @if ($property->agent_id == NULL)
+                         @if ($property->agent_id == NULL)
                             <input type="hidden" name="agent_id" value="">
 
-                             @else
+                         @else
                             <input type="hidden" name="agent_id" value="{{ $property->agent_id }}">
-                            @endif
+                        @endif
 
                             <div class="form-group">
                                 <input type="text" name="msg_name" placeholder="Your name" value="{{ $userData->name }}">
@@ -323,19 +322,19 @@
                             </div>
                         </form>
 
-                        @else
+                    @else
 
                         <form action="{{ route('property.message') }}" method="post" class="default-form">
                             @csrf
 
                             <input type="hidden" name="property_id" value="{{ $property->id }}">
 
-                            @if ($property->agent_id == NULL)
+                        @if ($property->agent_id == NULL)
                             <input type="hidden" name="agent_id" value="">
 
-                             @else
+                        @else
                             <input type="hidden" name="agent_id" value="{{ $property->agent_id }}">
-                            @endif
+                        @endif
 
 
 
@@ -356,7 +355,7 @@
                             </div>
                         </form>
 
-                        @endauth
+                     @endauth
                        
                     </div>
 

@@ -296,3 +296,6 @@ Route::post('/property/message', [IndexController::class, 'PropertyMessage'])->n
 
 //Agent Details Page in frontend
 Route::get('/agent/details/{id}', [IndexController::class, 'AgentDetails'])->name('agent.details');
+
+//Send Message form Agent Details Page
+Route::post('/agent/details/message', [IndexController::class, 'AgentDetailsMessage'])->name('agent.details.message');
