@@ -293,3 +293,6 @@ Route::post('/add-to-wishlist/{property_id}', [WishlistController::class, 'AddTo
 Route::post('/add-to-compare/{property_id}', [CompareController::class, 'AddToCompare']);
 //Send Message form Property Details Page
 Route::post('/property/message', [IndexController::class, 'PropertyMessage'])->name('property.message');
+
+//Agent Details Page in frontend
+Route::get('/agent/details/{id}', [IndexController::class, 'AgentDetails'])->name('agent.details');
