@@ -126,7 +126,7 @@ class IndexController extends Controller
 
     public function RentProperty(){
 
-        $property = Property::where('status','1')->where('property_status', 'rent')->get();
+        $property = Property::where('status','1')->where('property_status', 'rent')->paginate(2);
         
         return view('frontend.property.rent_property', compact('property'));
 
@@ -138,6 +138,14 @@ class IndexController extends Controller
         
         return view('frontend.property.buy_property', compact('property'));
 
+    } // End Method
+
+    public function PropertyType($id){
+
+        $property = Property::where('status','1')->where('ptype_id',$id)->get();
+        $pbread  = PropertyType::where('id',$id)->first();
+
+        return view('frontend.property.property_type',compact('property','pbread'));
     } // End Method
 
 

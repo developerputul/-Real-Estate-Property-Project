@@ -127,16 +127,14 @@ Route::middleware(['auth','role:agent'])->group(function(){
 
 
 
-   Route::get('/agent/login', [AgentController::class, 'AgentLogin'])->name('agent.login')
-   ->middleware(RedirectIfAuthenticated::class);
+   Route::get('/agent/login', [AgentController::class, 'AgentLogin'])
+   ->middleware(RedirectIfAuthenticated::class)->name('agent.login'); 
+
 
    Route::post('/agent/register', [AgentController::class, 'AgentRegister'])->name('agent.register');
 
    Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')
    ->middleware(RedirectIfAuthenticated::class);
-
-
-
 
 
 
@@ -305,3 +303,6 @@ Route::get('/rent/property', [IndexController::class, 'RentProperty'])->name('re
 
 //Get All Buy  Route
 Route::get('/buy/property', [IndexController::class, 'BuyProperty'])->name('buy.property');
+
+//Get All Property Type Data
+Route::get('/property/type/{id}', [IndexController::class, 'PropertyType'])->name('property.type');
