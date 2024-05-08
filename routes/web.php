@@ -316,7 +316,8 @@ Route::post('/property/message', [IndexController::class, 'PropertyMessage'])->n
 Route::get('/agent/details/{id}', [IndexController::class, 'AgentDetails'])->name('agent.details');
 
 //Send Message form Agent Details Page
-Route::post('/agent/details/message', [IndexController::class, 'AgentDetailsMessage'])->name('agent.details.message');
+Route::post('/agent/details/message', [IndexController::class, 'AgentDetailsMessage'])
+->name('agent.details.message');
 
 // Get All Rent Route
 Route::get('/rent/property', [IndexController::class, 'RentProperty'])->name('rent.property');
@@ -329,3 +330,7 @@ Route::get('/property/type/{id}', [IndexController::class, 'PropertyType'])->nam
 
 //Get State Details page
 Route::get('/state/details/{id}', [IndexController::class, 'StateDetails'])->name('state.details');
+
+//Home Page Buy Search Option
+Route::post('/buy/property/search', [IndexController::class, 'BuyPropertySearch'])
+->name('buy.property.search');
