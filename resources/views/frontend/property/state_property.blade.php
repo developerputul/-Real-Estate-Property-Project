@@ -9,10 +9,10 @@
     </div>
     <div class="auto-container">
         <div class="content-box clearfix">
-            <h1>Rent Property</h1>
+            <h1>{{ $bstate->state_name }} Property</h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="index.html">Home</a></li>
-                <li>Rent Property List</li>
+                <li>{{ $bstate->state_name }} Property List</li>
             </ul>
         </div>
     </div>
@@ -214,7 +214,7 @@
                        
                     </div>
                     <div class="pagination-wrapper">
-                        {{ $property->links('vendor.pagination.custom') }}
+                       
                     </div>
                 </div>
             </div>

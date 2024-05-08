@@ -16,6 +16,7 @@ use App\Models\PackagePlan;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\PropertyMessage;
 use Carbon\Carbon;
+use App\Models\State;
 
 class IndexController extends Controller
 {
@@ -146,6 +147,16 @@ class IndexController extends Controller
         $pbread  = PropertyType::where('id',$id)->first();
 
         return view('frontend.property.property_type',compact('property','pbread'));
+    } // End Method
+
+    public function StateDetails($id){
+
+        $property = Property::where('status','1')->where('state',$id)->get();
+
+        $bstate = State::findOrFail($id);
+
+        return view('frontend.property.state_property', compact('property','bstate'));
+
     } // End Method
 
 
