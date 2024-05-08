@@ -11,6 +11,7 @@ use App\Models\PropertyType;
 use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Amenities;
+use App\Models\State;
 use Illuminate\Support\Facades\Auth; 
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use DB;
@@ -34,6 +35,7 @@ class AgentPropertyController extends Controller
 
         $propertytype = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
+        $pstate = State::latest()->get();
 
         $id = Auth::user()->id;
         $property = User::where('role','agent')->where('id',$id)->first();
@@ -43,7 +45,7 @@ class AgentPropertyController extends Controller
         if($pcount == 1 || $pcount == 7){
             return redirect()->route('buy.package');
         }else{
-            return view('agent.property.add_property', compact('propertytype', 'amenities',));
+            return view('agent.property.add_property', compact('propertytype', 'amenities','pstate'));
         }
 
       
@@ -165,13 +167,14 @@ class AgentPropertyController extends Controller
         $property_ami = explode(',', $type);
 
         $multiImage = MultiImage::where('property_id', $id)->get();
+        $pstate = State::latest()->get();
 
         $propertytype = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
        
 
         return view('agent.property.edit_property',compact('property', 
-        'propertytype','amenities','property_ami', 'multiImage', 'facilities'));
+        'propertytype','amenities','property_ami', 'multiImage', 'facilities','pstate'));
 
     } // End Method
 

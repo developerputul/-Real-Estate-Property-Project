@@ -7,6 +7,9 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Backend\PropertyController;
+use App\Http\Controllers\Backend\StateController;
+
+
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -141,6 +144,7 @@ Route::middleware(['auth','role:agent'])->group(function(){
 //Admin Group Middleware
  Route::middleware(['auth','role:admin'])->group(function(){
  
+
 //Property Type All Route
  Route::controller(PropertyTypeController::class)->group(function(){
 
@@ -152,7 +156,6 @@ Route::middleware(['auth','role:agent'])->group(function(){
 
         Route::post('/update/type', 'UpdateType')->name('update.type');
         Route::get('/delete/type{id}', 'DeleteType')->name('delete.type');
-
 });
 
 //Amenities All Type Route
@@ -214,6 +217,23 @@ Route::controller(PropertyController::class)->group(function(){
 
         Route::get('/changeStatus', 'changeStatus');
 });
+
+
+//State All Route
+Route::controller(StateController::class)->group(function(){
+
+    Route::get('/all/state', 'AllState')->name('all.state');
+    Route::get('/add/state', 'AddState')->name('add.state');
+
+    Route::post('/store/state', 'StoreState')->name('store.state');
+    Route::get('/edit/state{id}', 'EditState')->name('edit.state');
+
+    Route::post('/update/state', 'UpdateState')->name('update.state');
+    Route::get('/delete/state{id}', 'DeleteState')->name('delete.state');
+});
+
+
+
 
 
 }); //End Group Admin Middleware//
