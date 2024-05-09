@@ -82,6 +82,7 @@ class PropertyTypeController extends Controller
    //Amenities All Method
    
    public function AllAmenitie(){
+    
     $amenities = Amenities::latest()->get();
     return view('backend.amenities.all_amenitie', compact('amenities'));
 

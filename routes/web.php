@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\TestimonialController;
+use App\Http\Controllers\Backend\BlogController;
 
 
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -144,7 +145,6 @@ Route::middleware(['auth','role:agent'])->group(function(){
 
 //Admin Group Middleware
  Route::middleware(['auth','role:admin'])->group(function(){
- 
 
 //Property Type All Route
  Route::controller(PropertyTypeController::class)->group(function(){
@@ -158,6 +158,7 @@ Route::middleware(['auth','role:agent'])->group(function(){
         Route::post('/update/type', 'UpdateType')->name('update.type');
         Route::get('/delete/type{id}', 'DeleteType')->name('delete.type');
 });
+
 
 //Amenities All Type Route
 Route::controller(PropertyTypeController::class)->group(function(){
@@ -244,6 +245,18 @@ Route::controller(TestimonialController::class)->group(function(){
 
     Route::post('/update/testimonials', 'UpdateTestimonials')->name('update.testimonials');
     Route::get('/delete/testimonials{id}', 'DeleteTestimonials')->name('delete.testimonials');
+});
+
+//Blog Category All Route
+Route::controller(BlogController::class)->group(function(){
+
+    Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');
+   
+    Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+    Route::get('/blog/category/{id}', 'EditBlogCategory');
+
+    Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
+    Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
 });
 
 
