@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\StateController;
+use App\Http\Controllers\Backend\TestimonialController;
 
 
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -232,6 +233,19 @@ Route::controller(StateController::class)->group(function(){
     Route::get('/delete/state{id}', 'DeleteState')->name('delete.state');
 });
 
+//Testimonial All Route
+Route::controller(TestimonialController::class)->group(function(){
+
+    Route::get('/all/testimonials', 'AllTestimonials')->name('all.testimonials');
+    Route::get('/add/testimonials', 'AddTestimonials')->name('add.testimonials');
+
+    Route::post('/store/testimonials', 'StoreTestimonials')->name('store.testimonials');
+    Route::get('/edit/testimonials{id}', 'EditTestimonials')->name('edit.testimonials');
+
+    Route::post('/update/testimonials', 'UpdateTestimonials')->name('update.testimonials');
+    Route::get('/delete/testimonials{id}', 'DeleteTestimonials')->name('delete.testimonials');
+});
+
 
 
 
@@ -334,3 +348,11 @@ Route::get('/state/details/{id}', [IndexController::class, 'StateDetails'])->nam
 //Home Page Buy Search Option
 Route::post('/buy/property/search', [IndexController::class, 'BuyPropertySearch'])
 ->name('buy.property.search');
+
+//Home Page Rent Search Option
+Route::post('/rent/property/search', [IndexController::class, 'RentPropertySearch'])
+->name('rent.property.search');
+
+//Home Page All Search Option
+Route::post('/all/property/search', [IndexController::class, 'AllPropertySearch'])
+->name('all.property.search');

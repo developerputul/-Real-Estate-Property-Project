@@ -1,3 +1,6 @@
+
+
+
 <section class="testimonial-section bg-color-1 centred">
     <div class="pattern-layer" style="background-image: url({{asset('frontend/assets/images/shape/shape-1.png')}});"></div>
     <div class="auto-container">
