@@ -205,5 +205,20 @@ class BlogController extends Controller
     
        } // End Method
 
+       public function BlogDetails($slug){
+
+
+        $blog = BlogPost::where('post_slug',$slug)->first();
+
+        $tags = $blog->post_tags;
+        $tags_all = explode(',',$tags);
+
+        $bcategory = BlogCategory::latest()->get();
+        $dpost = BlogPost::latest()->limit(3)->get();
+
+        return view('frontend.blog.blog_details', compact('blog','tags_all','bcategory','dpost'));
+
+       } // End Method
+
 
 }
