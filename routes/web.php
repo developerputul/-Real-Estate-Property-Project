@@ -385,4 +385,6 @@ Route::post('/all/property/search', [IndexController::class, 'AllPropertySearch'
 ->name('all.property.search');
 
 //Blog Details Slug Route
-Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails'])->name('blog.details');
+Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
+Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
+Route::get('/blog/list', [BlogController::class, 'BlogList'])->name('blog.list');
