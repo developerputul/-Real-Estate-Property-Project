@@ -317,8 +317,10 @@ Route::controller(BlogController::class)->group(function(){
        ->name('agent.delete.property');
  
        Route::get('/agent/property/message/', 'AgentPropertyMessage')->name('agent.property.message');
-
        Route::get('/agent/message/details/{id}', 'AgentMessageDetails')->name('agent.message.details');
+
+    //Schedule Request Route
+       Route::get('/agent/schedule/request/', 'AgentScheduleRequest')->name('agent.schedule.request');
  
 });
 
@@ -384,6 +386,10 @@ Route::post('/rent/property/search', [IndexController::class, 'RentPropertySearc
 Route::post('/all/property/search', [IndexController::class, 'AllPropertySearch'])
 ->name('all.property.search');
 
+
+
+
+
 //Blog Details Slug Route
 Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
@@ -395,3 +401,6 @@ Route::get('/admin/blog/comment', [BlogController::class, 'AdminBlogComment'])->
 Route::get('/admin/comment/reply/{id}', [BlogController::class, 'AdminCommentReply'])->name('admin.comment.reply');
 
 Route::post('/reply/message', [BlogController::class, 'ReplyMessage'])->name('reply.message');
+
+//schedule Message Request Route
+Route::post('/store/schedule', [IndexController::class, 'StoreSchedule'])->name('store.schedule');

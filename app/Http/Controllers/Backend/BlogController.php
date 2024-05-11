@@ -208,9 +208,7 @@ class BlogController extends Controller
 
        public function BlogDetails($slug){
 
-
-        $blog = BlogPost::where('post_slug',$slug)->first();
-
+        $blog = BlogPost::where('post_slug', $slug)->firstOrFail();
         $tags = $blog->post_tags;
         $tags_all = explode(',',$tags);
 
@@ -220,6 +218,16 @@ class BlogController extends Controller
         return view('frontend.blog.blog_details', compact('blog','tags_all','bcategory','dpost','tags'));
 
        } // End Method
+
+//     public function blogDetails($slug)
+// {
+//     $blog = BlogPost::where('post_slug', $slug)->firstOrFail();
+//     $tags_all = explode(',', $blog->post_tags);
+//     $bcategory = BlogCategory::latest()->get();
+//     $dpost = BlogPost::latest()->limit(3)->get();
+//     return view('frontend.blog.blog_details', compact('blog', 'tags_all', 'bcategory', 'dpost'));
+// }
+
 
        public function BlogCatList($id){
 
