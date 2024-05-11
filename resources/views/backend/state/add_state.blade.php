@@ -19,7 +19,6 @@
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">State Name</label>
                 <input type="text" name="state_name" class="form-control">
-                
             </div>
 
             <div class="mb-3">

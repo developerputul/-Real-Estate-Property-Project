@@ -42,7 +42,8 @@
                         <div class="post">
                             <figure class="post-thumb">
                             <a href="blog-details.html">
-                                <img src="{{ !empty($userData->photo) ? url('upload/user_images/'.$userData->photo) : url('upload/no_image.jpg')}}" alt="">
+                            <img src="{{ !empty($userData->photo) ?
+                             url('upload/user_images/'.$userData->photo) : url('upload/no_image.jpg')}}" alt="">
                             </a>
                             </figure>
                             <h5><a href="blog-details.html">{{ $userData->name }}</a></h5>

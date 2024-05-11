@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
+use App\Models\Comment;
 
 class BlogController extends Controller
 {
@@ -244,4 +245,67 @@ class BlogController extends Controller
        }// Emd Method
 
 
+       public function StoreComment(Request $request){
+
+        $pid = $request->post_id;
+
+        Comment::insert([
+
+            'user_id' => Auth::user()->id,
+            'post_id' => $pid,
+            'parent_id' => null,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        $notification = [
+            'message' => 'Comment Inserted Successfully',
+            'alert-type' => 'success'
+        ];
+    
+        return redirect()->back()->with($notification);
+
+       } // End Method
+
+       public function AdminBlogComment(){
+
+        $comment = Comment::where('parent_id',null)->latest()->get();
+
+        return view('backend.comment.comment_all',compact('comment'));
+       } // End Method
+
+       public function AdminCommentReply($id){
+
+            $comment = Comment::where('id',$id)->first();
+            return view('backend.comment.reply_comment', compact('comment'));
+
+       } // End Method
+
+       public function ReplyMessage(Request $request){
+
+        $id = $request->id;
+        $user_id = $request->user_id;
+        $post_id = $request->post_id;
+
+        Comment::insert([
+
+            'user_id' => $user_id,
+            'post_id' =>  $post_id, 
+            'parent_id' => $id,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        $notification = [
+            'message' => 'Reply Inserted Successfully',
+            'alert-type' => 'success'
+        ];
+    
+        return redirect()->back()->with($notification);
+
+       }// End Method
 }
