@@ -321,6 +321,10 @@ Route::controller(BlogController::class)->group(function(){
 
     //Schedule Request Route
        Route::get('/agent/schedule/request/', 'AgentScheduleRequest')->name('agent.schedule.request');
+
+       Route::get('/agent/details/schedule/{id}', 'AgentDetailsSchedule')->name('agent.details.schedule');
+
+       Route::post('/agent/update/schedule', 'AgentUpdateSchedule')->name('agent.update.schedule');
  
 });
 

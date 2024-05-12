@@ -9,7 +9,11 @@ class Schedule extends Model
 {
     use HasFactory;
 
-    protected $guraded =[];
+    protected $fillable = [
+        'status', // Add any other fields here that you want to allow mass assignment for
+    ];
+    
+//  protected $guraded =[];
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id','id');
