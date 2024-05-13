@@ -12,9 +12,9 @@
     </li>
 
     <li>
-        <a href="blog-details.html">
+        <a href="{{ route('user.schedule.request') }}">
             <i class="fa fa-credit-card" aria-hidden="true">
-            </i> Buy credits<span class="badge badge-info">( 10 credits)</span>
+            </i>Schedule Request<span class="badge badge-info">()</span>
         </a>
     </li>
 

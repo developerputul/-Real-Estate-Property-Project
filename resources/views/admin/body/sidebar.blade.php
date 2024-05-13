@@ -196,10 +196,19 @@
                     </div>
                 </li>
 
+               
+
                 <li class="nav-item">
                     <a href="{{ route('admin.blog.comment') }}" class="nav-link">
                     <i class="link-icon" data-feather="calendar"></i>
                     <span class="link-title">Blog Comment</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('smtp.setting') }}" class="nav-link">
+                    <i class="link-icon" data-feather="calendar"></i>
+                    <span class="link-title">SMTP Setting</span>
                     </a>
                 </li>
 

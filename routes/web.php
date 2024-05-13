@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\SettingController;
 
 
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -61,8 +62,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])
     ->name('user.password.update');
 
+    Route::get('/user/schedule/request', [UserController::class, 'UserScheduleRequest'])
+    ->name('user.schedule.request');
+
      
-//User Wishlist Type All Route
+//User Wishlist All Route
  Route::controller(WishlistController::class)->group(function(){
 
     Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist');
@@ -273,7 +277,14 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/delete/post{id}', 'DeletePost')->name('delete.post');
 });
 
+//SMTP Setting All Route
 
+Route::controller(SettingController::class)->group(function(){
+
+    Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
+    Route::post('/update/smtp/setting', 'UpdateSmtpSetting')->name('update.smtp.setting');
+    
+});
 
 
 

@@ -131,10 +131,10 @@ class PropertyController extends Controller
             }
         } // End Facility//
 
-        $notification = [
+        $notification = array(
             'message' => 'Property Inserted Successfully',
             'alert-type' => 'success'
-        ];
+        );
 
         return redirect()->route('all.property')->with($notification);
 

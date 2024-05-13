@@ -107,10 +107,11 @@
                                        <input class="form-control" name="photo" type="file" id="image">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="formFile" class="form-label"></label>
-                                        <img id="showImage" src="{{ !empty($userData->photo) ? url('upload/user_images/'.$userData->photo) : url('upload/no_image.jpg')}}" alt="" style="width: 100px" height="100px">
-                                    </div>
+                            <div class="form-group">
+                                <label for="formFile" class="form-label"></label>
+                                <img id="showImage" src="{{ !empty($userData->photo) ?
+                                    url('upload/user_images/'.$userData->photo) : url('upload/no_image.jpg')}}" alt="" style="width: 100px" height="100px">
+                            </div>
 
                                     <div class="form-group message-btn">
                                         <button type="submit" class="theme-btn btn-one">Save Changes </button>
