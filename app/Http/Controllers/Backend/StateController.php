@@ -58,7 +58,6 @@ class StateController extends Controller
    public function UpdateState(Request $request){
 
     $state_id = $request->id;
-
     if ($request->file('state_img')){
 
         $image = $request->file('state_img');
