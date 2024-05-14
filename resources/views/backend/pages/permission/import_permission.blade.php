@@ -9,7 +9,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
            
-            <a href="{{ route('add.permission') }}" class="btn btn-inverse-danger">Download Xlsx</a>
+            <a href="{{ route('export') }}" class="btn btn-inverse-danger">Download Xlsx</a>
 
         </ol>
     </nav>
@@ -24,7 +24,7 @@
 
         <h6 class="card-title">Import Permission</h6>
 
-    <form id="myForm" method="POST" action="{{ route('store.permission') }}" class="forms-sample">
+    <form id="myForm" method="POST" action="{{ route('import') }}" class="forms-sample" enctype="multipart/form-data">
         @csrf
 
             <div class="form-group mb-3">
