@@ -229,6 +229,7 @@ class RoleController extends Controller
 
     public function AdminRolesUpdate(Request $request, $id){
         $role = Role::findOrFail($id);
+        
         $permissionIds = $request->permission;
         $permissions = Permission::whereIn('id', $permissionIds)->get();
         $permissionNames = $permissions->pluck('name')->toArray();
