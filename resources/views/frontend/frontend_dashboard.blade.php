@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-<title> @yield('title')</title>
+    <title> @yield('title') </title>
+    @vite(['resources/js/app.js'])
 
-<!-- Fav Icon -->
-<link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico')}}" type="image/x-icon">
+    <!-- Fav Icon -->
+    <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico') }}" type="image/x-icon">
 
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-<!-- Stylesheets -->
-<link href="{{ asset('frontend/assets/css/font-awesome-all.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/flaticon.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/owl.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/bootstrap.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/jquery.fancybox.min.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/animate.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/jquery-ui.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/nice-select.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/color/theme-color.css')}}" id="jssDefault" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/switcher-style.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/style.css')}}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/responsive.css')}}" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="{{ asset('frontend/assets/css/font-awesome-all.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/flaticon.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/owl.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/nice-select.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/color/theme-color.css') }}" id="jssDefault" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/switcher-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 </head>
 
 <!-- page wrapper -->
+
 <body>
 
     <div class="boxed_wrapper">
 
         <!-- preloader -->
-      @include('frontend.home.preload')
+        @include('frontend.home.preload')
         <!-- preloader end -->
 
         <!-- main header -->
@@ -47,7 +52,7 @@
         <!-- main-header end -->
 
         <!-- Mobile Menu  -->
-       @include('frontend.home.mobile_menu')
+        @include('frontend.home.mobile_menu')
         <!-- End Mobile Menu -->
 
         @yield('main')
@@ -65,125 +70,133 @@
 
 
     <!-- jequery plugins -->
-    <script src="{{ asset('frontend/assets/js/jquery.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/popper.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/owl.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/wow.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/validation.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/jquery.fancybox.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/appear.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/scrollbar.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/isotope.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/jQuery.style.switcher.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/jquery-ui.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/nav-tool.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/owl.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/wow.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/validation.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/appear.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/scrollbar.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/isotope.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jQuery.style.switcher.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/nav-tool.js') }}"></script>
 
 
-     <!-- map script -->
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
-     <script src="{{ asset('frontend/assets/js/gmaps.js') }}"></script>
-     <script src="{{ asset('frontend/assets/js/map-helper.js') }}"></script>
+    <!-- map script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
+    <script src="{{ asset('frontend/assets/js/gmaps.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/map-helper.js') }}"></script>
 
     <!-- main-js -->
-    <script src="{{ asset('frontend/assets/js/script.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
     </script>
 
 
 
-<script>
-	@if(Session::has('message'))
-	var type = "{{ Session::get('alert-type','info') }}"
-	switch(type){
-	   case 'info':
-	   toastr.info(" {{ Session::get('message') }} ");
-	   break;
-   
-	   case 'success':
-	   toastr.success(" {{ Session::get('message') }} ");
-	   break;
-   
-	   case 'warning':
-	   toastr.warning(" {{ Session::get('message') }} ");
-	   break;
-   
-	   case 'error':
-	   toastr.error(" {{ Session::get('message') }} ");
-	   break; 
-	}
-	@endif 
-   </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    break;
+            }
+        @endif
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="text/javascript">
-    $.ajaxSetup({
-        headers:{
-            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-        }
-    })
-     
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+
         //Add To Wishlist
-        function addToWishlist(property_id){
+        function addToWishlist(property_id) {
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: "/add-to-wishlist/"+property_id,
+                url: "/add-to-wishlist/" + property_id,
 
-                success:function(data){
+                success: function(data) {
                     wishlist();
 
-                     // Start Message 
-            const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  
-                  showConfirmButton: false,
-                  timer: 3000 
-            })
-            if ($.isEmptyObject(data.error)) {
-                    
-                    Toast.fire({
-                    type: 'success',
-                    icon: 'success', 
-                    title: data.success, 
-                    })
+                    // Start Message 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
 
-            }else{
-               
-           Toast.fire({
-                    type: 'error',
-                    icon: 'error', 
-                    title: data.error, 
+                        showConfirmButton: false,
+                        timer: 3000
                     })
-                }
-              // End Message  
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message  
 
 
                 }
             })
         }
-
     </script>
- <!-- // start load Wishlist Data  -->
- <script type="text/javascript">
-    function wishlist(){
-        $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: "/get-wishlist-property/",
+    <!-- // start load Wishlist Data  -->
+    <script type="text/javascript">
+        function wishlist() {
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: "/get-wishlist-property/",
 
-            success:function(response){
-                $('#wishQty').text(response.wishQty);
+                success: function(response) {
+                    $('#wishQty').text(response.wishQty);
 
 
-                var rows = ""
-                $.each(response.wishlist, function(key,value){
+                    var rows = ""
+                    $.each(response.wishlist, function(key, value) {
 
-                    rows += `<div class="deals-block-one">
+                        rows += `<div class="deals-block-one">
                         <div class="inner-box">
                             <div class="image-box">
                                 <figure class="image"><img src="/${value.property.property_thambnail}" alt=""></figure>
@@ -217,121 +230,119 @@
                             </div>
                         </div>
                     </div>`
-                    
-                
-                });
-                $('#wishlist').html(rows);
-            }
-        })
-    }
-    wishlist();
 
-    //WishList Remove start
 
-    function wishlistRemove(id){
-
-        $.ajax({
-            type: "GET",
-            dataType: 'Json',
-            url: "/wishlist-remove/"+id,
-
-            success:function(data){
-                wishlist();
-                
-                     // Start Message 
-            const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  
-                  showConfirmButton: false,
-                  timer: 3000 
-            })
-            if ($.isEmptyObject(data.error)) {
-                    
-                    Toast.fire({
-                    type: 'success',
-                    icon: 'success', 
-                    title: data.success, 
-                    })
-
-            }else{
-               
-           Toast.fire({
-                    type: 'error',
-                    icon: 'error', 
-                    title: data.error, 
-                    })
+                    });
+                    $('#wishlist').html(rows);
                 }
-              // End Message
+            })
+        }
+        wishlist();
 
-            }
-        })
+        //WishList Remove start
 
-    }
-    //End WishList Remove start
-</script>
+        function wishlistRemove(id) {
 
- {{-- //Add to compare// --}}
-<script type="text/javascript">
+            $.ajax({
+                type: "GET",
+                dataType: 'Json',
+                url: "/wishlist-remove/" + id,
 
-function addToCompare(property_id){
+                success: function(data) {
+                    wishlist();
+
+                    // Start Message 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message
+
+                }
+            })
+
+        }
+        //End WishList Remove start
+    </script>
+
+    {{-- //Add to compare// --}}
+    <script type="text/javascript">
+        function addToCompare(property_id) {
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: "/add-to-compare/"+property_id,
+                url: "/add-to-compare/" + property_id,
 
-                success:function(data){
-                  
+                success: function(data) {
 
-                     // Start Message 
-            const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  
-                  showConfirmButton: false,
-                  timer: 3000 
-            })
-            if ($.isEmptyObject(data.error)) {
-                    
-                    Toast.fire({
-                    type: 'success',
-                    icon: 'success', 
-                    title: data.success, 
+
+                    // Start Message 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
                     })
+                    if ($.isEmptyObject(data.error)) {
 
-            }else{
-               
-           Toast.fire({
-                    type: 'error',
-                    icon: 'error', 
-                    title: data.error, 
-                    })
-                }
-              // End Message  
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message  
 
 
                 }
             })
         }
+    </script>
+    {{-- //End to compare// --}}
 
-</script>
- {{-- //End to compare// --}}
 
+    <!-- // start load Wishlist Data  -->
+    <script type="text/javascript">
+        function compare() {
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: "/get-compare-property/",
 
-<!-- // start load Wishlist Data  -->
-<script type="text/javascript">
-    function compare(){
-        $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: "/get-compare-property/",
+                success: function(response) {
 
-            success:function(response){
+                    var rows = ""
+                    $.each(response, function(key, value) {
 
-                var rows = ""
-                $.each(response, function(key,value){
-
-                    rows += ` <tr>
+                        rows += ` <tr>
                                 <th>Property Info</th>
                                 <th>
                                     <figure class="image-box"><img src="/${value.property.property_thambnail}" alt=""></figure>
@@ -386,60 +397,61 @@ function addToCompare(property_id){
                                 </td>
                             </tr>
  `
-                    
-                
-                });
-                $('#compare').html(rows);
-            }
-        })
-    }
-    compare();
 
-    //Compare Remove start
-    function compareRemove(id){
 
-$.ajax({
-    type: "GET",
-    dataType: 'Json',
-    url: "/compare-remove/"+id,
-
-    success:function(data){
-        compare();
-        
-             // Start Message 
-    const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          
-          showConfirmButton: false,
-          timer: 3000 
-    })
-    if ($.isEmptyObject(data.error)) {
-            
-            Toast.fire({
-            type: 'success',
-            icon: 'success', 
-            title: data.success, 
-            })
-
-    }else{
-       
-   Toast.fire({
-            type: 'error',
-            icon: 'error', 
-            title: data.error, 
+                    });
+                    $('#compare').html(rows);
+                }
             })
         }
-      // End Message
+        compare();
 
-    }
-})
+        //Compare Remove start
+        function compareRemove(id) {
 
-}
-   
-    //End Compare Remove 
-</script>
+            $.ajax({
+                type: "GET",
+                dataType: 'Json',
+                url: "/compare-remove/" + id,
+
+                success: function(data) {
+                    compare();
+
+                    // Start Message 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message
+
+                }
+            })
+
+        }
+
+        //End Compare Remove 
+    </script>
 
 </body>
 <!-- End of .page_wrapper -->
+
 </html>
