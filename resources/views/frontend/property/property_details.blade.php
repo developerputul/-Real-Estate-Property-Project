@@ -298,17 +298,19 @@
                                     </ul>
 
 
-                                    @auth
-                                    <div class="putul">
-                                        @component('components.send-message', ['receiverid' => $property->agent_id, 'receivername' => $property->user->name, 'succMessage' => session('succMessage')])
-                                        @endcomponent
-                                    </div>
-                                    @else
-                                        <span class="text-danger">For Chat Login First</span>
-                                    @endauth
+                            @auth
+                            <div class="putul">
+                                @component('components.send-message', ['receiverid' => $property->agent_id,
+                                 'receivername' => $property->user->name, 'succMessage' => session('succMessage')])
+                                @endcomponent
+                            </div>
+                            @else
+                                <span class="text-danger">For Chat Login First</span>
+                            @endauth
 
                                 </div>
                             @endif
+
                         </div>
 
 

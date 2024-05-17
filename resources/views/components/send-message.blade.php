@@ -12,6 +12,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
+                
                 <form method="post" action="{{ route('send.msg') }}">
                     @csrf
                     <div class="modal-body">
@@ -26,6 +27,7 @@
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

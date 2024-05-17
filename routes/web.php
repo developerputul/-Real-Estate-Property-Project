@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/schedule/request', [UserController::class, 'UserScheduleRequest'])
     ->name('user.schedule.request');
 
+    Route::get('/live/chat', [UserController::class, 'LiveChat'])->name('live.chat');
+
      
 //User Wishlist All Route
  Route::controller(WishlistController::class)->group(function(){

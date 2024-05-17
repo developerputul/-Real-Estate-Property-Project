@@ -31,6 +31,12 @@
     </li>
 
     <li>
+        <a href="{{ route('live.chat') }}">
+        <i class="fa fa-indent" aria-hidden="true">
+        </i>User Contact</a>
+    </li>
+
+    <li>
         <a href="{{ route('user.change.password') }}">
             <i class="fa fa-key" aria-hidden="true">
                 </i> Security </a>
