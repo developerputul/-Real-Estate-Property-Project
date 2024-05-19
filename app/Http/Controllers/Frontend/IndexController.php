@@ -25,7 +25,7 @@ class IndexController extends Controller
 
         $property = Property::findOrFail($id);
 
-        $amenities = $property->amenities_id;
+        $amenities = $property->amemities_id;
         $property_amen = explode(',',$amenities);
 
         $multiImage = MultiImage::where('property_id', $id)->get();
@@ -262,10 +262,14 @@ class IndexController extends Controller
             );
     
             return redirect()->back()->with($notification);
-
         }
 
     }// End Method
 
+    public function PropertyAllCategory(){
 
+        return view('frontend.property.property_all_details');
+
+    }//End Section
+ 
 }

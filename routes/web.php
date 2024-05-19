@@ -470,9 +470,18 @@ Route::post('/buy/property/search', [IndexController::class, 'BuyPropertySearch'
 Route::post('/rent/property/search', [IndexController::class, 'RentPropertySearch'])
 ->name('rent.property.search');
 
+
 //Home Page All Search Option
 Route::post('/all/property/search', [IndexController::class, 'AllPropertySearch'])
 ->name('all.property.search');
+
+//Home Page All Search Option
+Route::get('/property/all/category', [IndexController::class, 'PropertyAllCategory'])
+->name('property.all.category');
+
+
+
+
 
 
 

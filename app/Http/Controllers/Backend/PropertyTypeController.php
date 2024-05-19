@@ -90,7 +90,7 @@ class PropertyTypeController extends Controller
 
    public function AddAmenitie(){
 
-    return view('backend.amenities.add_aminitie');
+    return view('backend.amenities.add_aminitie'); 
 
    } // End Method
 
@@ -118,6 +118,7 @@ public function EditAmenitie($id){
 public function UpdateAmenitie(Request $request){
 
     $ame_id = $request->id;
+    
     Amenities::findOrFail($ame_id)->update([
         'amenitis_name' => $request->amenitis_name,
     ]);

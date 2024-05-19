@@ -198,6 +198,7 @@
                         <div class="col-sm-4">
                             <div class="mb-3">
                                 <label class="form-label">Property Amenities</label>
+                                
                     <select name="amemities_id[]" class="js-example-basic-multiple form-select" multiple="multiple"
                      data-width="100%">
 

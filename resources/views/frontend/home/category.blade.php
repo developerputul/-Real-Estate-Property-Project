@@ -21,10 +21,11 @@
                         </div>
                     </div>
                 </li>
+                
              @endforeach
 
             </ul>
-            <div class="more-btn"><a href="categories.html" class="theme-btn btn-one">All Categories</a></div>
+            <div class="more-btn"><a href="{{ route('property.all.category') }}" class="theme-btn btn-one">All Categories</a></div>
         </div>
     </div>
 </section>

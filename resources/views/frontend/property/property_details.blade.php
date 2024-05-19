@@ -1,5 +1,6 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
+
 @section('title')
     {{ $property->property_name }} | Easy RealEstate
 @endsection
@@ -36,9 +37,11 @@
                     <div class="author-box pull-left">
 
                         @if ($property->agent_id == null)
-                            <figure class="author-thumb"><img src="{{ url('upload/banner_img.png') }}" alt="">
+                           
+                        <figure class="author-thumb"><img src="{{ url('upload/banner_img.png') }}" alt="">
                             </figure>
                             <h6>Admin</h6>
+                            
                         @else
                             <figure class="author-thumb"><img
                                     src="{{ !empty($property->user->photo)
@@ -121,8 +124,9 @@
                         </div>
                         <ul class="list clearfix">
 
-                            @foreach ($property_amen as $amen)
+                            @foreach ($property_amen as $amen) 
                                 <li>{{ $amen }}</li>
+
                             @endforeach
 
                         </ul>

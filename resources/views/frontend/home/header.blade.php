@@ -80,10 +80,10 @@
 
 <li><a href="contact.html"><span>Contact</span></a></li> 
 
-<li>
+{{-- <li>
     <a href="{{ route('agent.login') }}" class="btn btn-success"><span>+</span>Add Listing</a> 
 
-</li>
+</li> --}}
 
     </ul>
   </div>

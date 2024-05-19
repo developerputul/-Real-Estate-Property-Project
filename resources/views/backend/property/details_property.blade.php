@@ -125,7 +125,7 @@
                                     <tr>
                                         <td>Property Amenities</td>
                                         <td>
-                                            <select name="amemities_id[]" class="js-example-basic-multiple form-select" multiple="multiple"
+                                            <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple"
                                             data-width="100%">
                                             @foreach ($amenities as $ameni)                                    
                                             <option value="{{ $ameni->amenitis_name }}" {{ (in_array($ameni->amenitis_name, $property_ami))
